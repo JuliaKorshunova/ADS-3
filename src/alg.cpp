@@ -5,24 +5,24 @@ int cbinsearch(int *arr, int size, int value) {
     int right = size - 1;
     int kolv = 0;
     while (right >= left) {
-        int middle = (left + right) / 2;
-        if (*(arr + middle) == value) {
+        int mid = (right + left) / 2;
+        if (*(arr + mid) == value) {
             kolv += 1;
-            int newmiddle = middle;
-            while ((*(arr + middle + 1)) == value) {
+            int newmid = mid;
+            while ((*(arr + mid + 1)) == value) {
                 kolv += 1;
-                middle += 1;
+                mid += 1;
             }
-            while ((*(arr + newmiddle - 1)) == value) {
+            while ((*(arr + newmid - 1)) == value) {
                 kolv += 1;
-                newmiddle -= 1;
+                newmid -= 1;
             }
             return kolv;
-        } else if (*(arr + middle) > value) {
-            left = middle + 1;
-        } else {
-            right = middle - 1;
-        }
+    } else if (*(arr + mid) > value) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
     }
-    return kolv;
+  }
+  return kolv;
 }
